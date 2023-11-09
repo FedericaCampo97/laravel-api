@@ -25,7 +25,7 @@
                 <td scope="row">{{$post->id}}</td>
                 <td>
                     @if($post->cover_image)
-                    <img width="100" src="assets('storage/' . {{$post->cover_image}})" alt=" {{$post->title}} image">
+                    <img width="100" src="{{asset('storage/' . $post->cover_image)}}" alt=" {{$post->title}} image">
                     @else
                     No image
                     @endif
@@ -38,9 +38,10 @@
                 <td scope="row">No posts here! </td>
             </tr>
             @endforelse
+
+            {{$posts->links('pagination::bootstrap-5')}}
         </tbody>
         <tfoot>
-
         </tfoot>
     </table>
 </div>
