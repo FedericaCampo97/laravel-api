@@ -61,7 +61,7 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+        return view('admin.posts.edit', compact('post'));
     }
 
     /**
@@ -69,7 +69,16 @@ class PostController extends Controller
      */
     public function update(UpdatePostRequest $request, Post $post)
     {
-        //
+        $val_data = $request->validated();
+
+        if ($request->has('cover_image')) {
+            $path = Storage::put('posts_images', $request->cover_image);
+            $val_data['cover_image'] = $path;
+        }
+
+        $post->update($val_data);
+
+        return to_route('admin.posts.index')->with('message', 'Post updated successfully');
     }
 
     /**
