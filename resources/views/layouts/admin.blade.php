@@ -47,11 +47,15 @@
                 <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-dark navbar-dark sidebar collapse">
                     <div class="position-sticky pt-3">
                         <ul class="nav flex-column">
-                            <li class="nav-item">
+                            <li class="nav-item mt-2">
 
-                                <a class="nav-link text-white {{ Route::currentRouteName() == 'admin.dashboard' ? 'bg-secondary' : '' }}" href="{{route('admin.dashboard')}}">
+                                <a class="border border-info rounded-4 nav-link text-white {{ Route::currentRouteName() == 'admin.dashboard' ? 'bg-info' : '' }}" href="{{route('admin.dashboard')}}">
                                     <i class="fa-solid fa-tachometer-alt fa-lg fa-fw"></i> Dashboard
                                 </a>
+                            </li>
+                            <li class="nav-item mt-2">
+                                <a class="rounded-4 border border-info nav-link text-white {{ Route::currentRouteName() == 'admin.posts.index' ? 'bg-info' : '' }}" href="/admin/posts">
+                                    <i class="fa-solid fa-tachometer-alt fa-lg fa-fw"></i> My Posts </a>
                             </li>
 
                         </ul>

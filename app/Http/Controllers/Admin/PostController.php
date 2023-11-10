@@ -6,6 +6,8 @@ use App\Models\Post;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class PostController extends Controller
 {
@@ -32,7 +34,18 @@ class PostController extends Controller
      */
     public function store(StorePostRequest $request)
     {
-        dd($request->all());
+
+        $val_data = $request->validated();
+
+        $val_data['slug'] = Str::slug($request->title, '-');
+
+        if ($request->has('cover_image')) {
+            $path = Storage::put('posts_images', $request->cover_image);
+            $val_data['cover_image'] = $path;
+        }
+
+        Post::create($val_data);
+        return to_route('admin.posts.index')->with('message', 'Post Created successfully');
     }
 
     /**

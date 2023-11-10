@@ -4,24 +4,34 @@
 
 <h1 class="my-5">Create your post!</h1>
 
+@if ($errors->any())
+<div class="alert alert-danger" role="alert">
+    <ul>
+        @foreach ($errors->all() as $error)
+        <li>{{$error}}</li>
+        @endforeach
+    </ul>
+</div>
+@endif
+
 <div class="card shadow">
     <div class="card-body">
         <form action="{{route('admin.posts.store')}}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="mb-3">
-                <label for="title" class="form-label">Title</label>
+                <label for="title" class="form-label text-primary"><strong>Title</strong></label>
                 <input type="text" name="title" id="title" class="form-control" placeholder="Enter a title" aria-describedby="helperTitle">
                 <small id="helperTitle" class="text-muted">Your post title max 50 character</small>
             </div>
 
             <div class="mb-3">
-                <label for="cover_image" class="form-label">Choose file</label>
+                <label for="cover_image" class="form-label text-primary"><strong>Choose file</strong></label>
                 <input type="file" class="form-control" name="cover_image" id="" placeholder="Choose a file" aria-describedby="fileHelp">
                 <div id="fileHelp" class="form-text">Add an image</div>
             </div>
 
             <div class="mb-3">
-                <label for="content" class="form-label">Content</label>
+                <label for="content" class="form-label text-primary"><strong>Content</strong></label>
                 <textarea class="form-control" name="content" id="content" rows="3"></textarea>
             </div>
 
@@ -31,6 +41,7 @@
                 </svg>
             </button>
         </form>
+
 
     </div>
 

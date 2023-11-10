@@ -1,13 +1,23 @@
 @extends('layouts.admin')
 
 @section('content')
-<h1 class="my-5">All Posts here</h1>
+
+@if (session('message'))
+<div class="alert alert-success alert-dismissible fade show mt-3 mb-0" role="alert">
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    <strong>Message:</strong> {{session('message')}}
+</div>
+@endif
+
+<h1 class="my-5">My Project</h1>
+
+<a href="/admin/posts/create"><button class="btn btn-primary mb-3"> Create new post </button></a>
 
 <div class="table-responsive">
     <table class="table table-striped
     table-hover	
     table-borderless
-    table-secondary
+    table-dark
     align-middle">
         <thead class="table-light">
             <caption>Posts</caption>
