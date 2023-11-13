@@ -86,6 +86,10 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        if ($post->cover_image) {
+            Storage::delete($post->cover_image);
+        }
+        $post->delete();
+        return to_route('admin.posts.index')->with('message', 'Post deleted!');
     }
 }

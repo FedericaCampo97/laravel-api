@@ -26,6 +26,7 @@ Route::middleware(['auth', 'verified'])->prefix('admin')->name('admin.')->group(
     Route::resource('posts', PostController::class)->parameters([
         'posts' => 'post:slug'
     ]);
+    Route::get('destroy/{post}', [PostController::class, 'destroy'])->name('destroy');
 });
 
 // Route::get('/dashboard', function () {
