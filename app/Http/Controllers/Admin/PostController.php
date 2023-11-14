@@ -7,6 +7,7 @@ use App\Models\Type;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
 use App\Http\Controllers\Controller;
+use App\Models\Technology;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
@@ -17,7 +18,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::orderByDesc('id')->with('type')->paginate(12);
+        $posts = Post::orderByDesc('id')->with('type')->with('technologies')->paginate(12);
         return view('admin.posts.index', compact('posts'));
     }
 
@@ -27,7 +28,8 @@ class PostController extends Controller
     public function create()
     {
         $types = Type::get();
-        return view('admin.posts.create', compact('types'));
+        $technologies = Technology::get();
+        return view('admin.posts.create', compact('types', 'technologies'));
     }
 
     /**
@@ -45,7 +47,12 @@ class PostController extends Controller
             $val_data['cover_image'] = $path;
         }
 
-        Post::create($val_data);
+        $post = Post::create($val_data);
+        if (!empty($request->technologies)) {
+            foreach ($request->technologies as $t) {
+                $post->technologies()->attach($t);
+            }
+        }
         return to_route('admin.posts.index')->with('message', 'Post Created successfully');
     }
 
@@ -63,7 +70,8 @@ class PostController extends Controller
     public function edit(Post $post)
     {
         $types = Type::get();
-        return view('admin.posts.edit', compact('post', 'types'));
+        $technologies = Technology::get();
+        return view('admin.posts.edit', compact('post', 'types', 'technologies'));
     }
 
     /**
@@ -75,6 +83,12 @@ class PostController extends Controller
         if ($request->has('cover_image')) {
             $path = Storage::put('posts_images', $request->cover_image);
             $val_data['cover_image'] = $path;
+        }
+        foreach ($post->technologies as $t) {
+            $post->technologies()->detach($t);
+        }
+        foreach ($request->technologies as $t) {
+            $post->technologies()->attach($t);
         }
 
         $post->update($val_data);

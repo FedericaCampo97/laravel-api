@@ -5,6 +5,7 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Database\Seeders\PostSeeder;
+use Database\Seeders\TechnologiesSeeder;
 use Database\Seeders\TypeSeeder;
 
 class DatabaseSeeder extends Seeder
@@ -23,7 +24,8 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
             PostSeeder::class,
-            TypeSeeder::class
+            TypeSeeder::class,
+            TechnologiesSeeder::class,
         ]);
     }
 }

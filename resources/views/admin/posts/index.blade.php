@@ -25,6 +25,7 @@
                 <th>COVER IMAGE</th>
                 <th>TITLE</th>
                 <th>TYPE</th>
+                <th>TECHNOLOGIES</th>
                 <th>LINK</th>
                 <th>ACTIONS</th>
             </tr>
@@ -43,6 +44,15 @@
                 </td>
                 <td>{{$post->title}}</td>
                 <td>{{$post->type ? $post->type->name : ''}}</td>
+                <td>
+                    @foreach($post->technologies as $i => $t)
+                    @if($i != 0)
+                    <span>-</span>
+                    @endif
+                    {{$t->name}}
+                    @endforeach
+                </td>
+                <td></td>
                 <td>
                     <a href="{{route('admin.posts.show' , $post)}}">
                         <button class="btn btn-outline-primary">

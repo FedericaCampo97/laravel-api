@@ -13,7 +13,7 @@ class UpdatePostRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return Auth::id() === 1;
+        return true;
     }
 
     /**
@@ -28,6 +28,7 @@ class UpdatePostRequest extends FormRequest
             'content' => ['nullable'],
             'cover_image' => ['nullable', 'image', 'max:800'],
             'type_id' => ['nullable'],
+            'technologies' => ['array', 'nullable']
         ];
     }
 }
