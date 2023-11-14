@@ -13,7 +13,7 @@ class UpdatePostRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return Auth::id() === 2;
+        return Auth::id() === 1;
     }
 
     /**
@@ -26,7 +26,8 @@ class UpdatePostRequest extends FormRequest
         return [
             'title' => ['required', 'min:5', 'max:50', Rule::unique('posts')->ignore($this->post)],
             'content' => ['nullable'],
-            'cover_image' => ['nullable', 'image', 'max:800']
+            'cover_image' => ['nullable', 'image', 'max:800'],
+            'type_id' => ['nullable'],
         ];
     }
 }

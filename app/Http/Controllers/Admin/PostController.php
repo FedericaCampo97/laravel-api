@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Post;
+use App\Models\Type;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
 use App\Http\Controllers\Controller;
@@ -16,8 +17,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::orderByDesc('id')->paginate(12);
-
+        $posts = Post::orderByDesc('id')->with('type')->paginate(12);
         return view('admin.posts.index', compact('posts'));
     }
 
@@ -26,7 +26,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('admin.posts.create');
+        $types = Type::get();
+        return view('admin.posts.create', compact('types'));
     }
 
     /**
@@ -61,7 +62,8 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        return view('admin.posts.edit', compact('post'));
+        $types = Type::get();
+        return view('admin.posts.edit', compact('post', 'types'));
     }
 
     /**
@@ -70,7 +72,6 @@ class PostController extends Controller
     public function update(UpdatePostRequest $request, Post $post)
     {
         $val_data = $request->validated();
-
         if ($request->has('cover_image')) {
             $path = Storage::put('posts_images', $request->cover_image);
             $val_data['cover_image'] = $path;

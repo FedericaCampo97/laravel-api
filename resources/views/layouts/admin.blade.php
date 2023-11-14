@@ -55,7 +55,7 @@
                             </li>
                             <li class="nav-item mt-2">
                                 <a class="rounded-4 border border-info nav-link text-white {{ Route::currentRouteName() == 'admin.posts.index' ? 'bg-info' : '' }}" href="/admin/posts">
-                                    <i class="fa-solid fa-tachometer-alt fa-lg fa-fw"></i> My Posts </a>
+                                    <i class="fa-solid fa-tachometer-alt fa-lg fa-fw"></i> My Projects </a>
                             </li>
 
                         </ul>

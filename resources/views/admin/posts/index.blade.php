@@ -22,9 +22,10 @@
         <thead class="table-light">
             <caption>Posts</caption>
             <tr>
-
                 <th>COVER IMAGE</th>
                 <th>TITLE</th>
+                <th>TYPE</th>
+                <th>LINK</th>
                 <th>ACTIONS</th>
             </tr>
         </thead>
@@ -41,6 +42,7 @@
                     @endif
                 </td>
                 <td>{{$post->title}}</td>
+                <td>{{$post->type ? $post->type->name : ''}}</td>
                 <td>
                     <a href="{{route('admin.posts.show' , $post)}}">
                         <button class="btn btn-outline-primary">
