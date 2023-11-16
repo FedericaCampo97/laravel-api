@@ -2,9 +2,9 @@
 
 @section('content')
 
-<body class="bg-white">
+<body class="bg-img">
     <div class="container">
-        <h2 class="text-secondary my-5 text-center ">
+        <h2 class="text-secondary my-5 text-center text-white">
             {{ __('Welcome') }} {{Auth::user()->name}}!
         </h2>
         @if (session('status'))
@@ -38,9 +38,6 @@
                 </div>
             </div>
 
-        </div>
-        <div class="text-end">
-            <img style="width: 70%; margin-top: 43px" src="https://img.freepik.com/fotos-premium/retrato-de-leopardo-em-pe-no-branco-isolado_191971-12376.jpg" alt="">
         </div>
     </div>
 

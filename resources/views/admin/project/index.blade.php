@@ -13,7 +13,7 @@
 
 <a href="/admin/projects/create"><button class="btn btn-primary mb-3"> Create new project </button></a>
 
-<div class="table-responsive">
+<div class="table-responsive ">
     <table class="table table-striped
     table-hover	
     table-borderless
@@ -52,7 +52,13 @@
                     {{$t->name}}
                     @endforeach
                 </td>
-                <td></td>
+                <td>
+                    <a target="_blank" href="{{$project->link}}">
+                        <button class="btn btn-primary">
+                            <i>Github</i>
+                        </button>
+                    </a>
+                </td>
                 <td>
                     <a href="{{route('admin.projects.show' , $project)}}">
                         <button class="btn btn-outline-primary">

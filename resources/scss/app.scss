@@ -3,3 +3,8 @@
 a {
     text-decoration: none !important
 }
+
+.bg-img {
+    background-image: url("/public/storage/img-bg.jpg");
+    background-size: cover;
+}

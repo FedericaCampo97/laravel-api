@@ -22,10 +22,10 @@
                 <label for="title" class="form-label text-primary"><strong>Title</strong></label>
                 <input type="text" name="title" id="title" class="form-control @error ('title') is-invalid @enderror" placeholder="Enter a title" aria-describedby="helperTitle">
                 <small id="helperTitle" class="text-muted">Your post title max 50 character</small>
+                @error('title')
+                <span class="text-dark">{{$message}}</span>
+                @enderror
             </div>
-            @error('title')
-            <span class="text-dark">{{$message}}</span>
-            @enderror
 
             <div class="mb-3">
                 <label for="cover_image" class="form-label text-primary"><strong>Choose file</strong></label>
@@ -68,6 +68,11 @@
             @error('content')
             <span class="text-dark">{{$message}}</span>
             @enderror
+
+            <div class="mb-3">
+                <label for="title" class="form-label text-primary"><strong>Link</strong></label>
+                <input type="text" name="link" id="title" class="form-control @error ('title') is-invalid @enderror" placeholder="Insert the link" aria-describedby="helperTitle">
+            </div>
 
             <button class="btn btn-primary" type="submit"> Save your post
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-save" viewBox="0 0 16 16">
