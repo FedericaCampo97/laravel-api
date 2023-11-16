@@ -16,8 +16,18 @@ a {
 .demo {
     -webkit-box-shadow: -2px 2px 37px 12px rgba(28, 227, 255, 0.73);
     box-shadow: -2px 2px 37px 12px rgba(28, 227, 255, 0.73);
+    cursor: pointer;
+}
+
+.demo:hover {
+    scale: 1.1;
+
 }
 
 .title_welcome {
     font-size: 55px;
+}
+
+.btn_hover:hover {
+    scale: 1.1;
 }

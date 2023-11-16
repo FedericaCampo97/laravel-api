@@ -11,9 +11,9 @@
 
 <h1 class="my-5 text-white">My Projects</h1>
 
-<a href="/admin/projects/create"><button class="btn btn-primary mb-3"> Create new project </button></a>
+<a href="/admin/projects/create"><button class="btn btn-primary mb-3 btn_hover"> Create new project </button></a>
 
-<div class="table-responsive ">
+<div class="table-responsive">
     <table class="table table-striped
     table-hover	
     table-borderless

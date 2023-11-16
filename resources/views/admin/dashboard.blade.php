@@ -14,24 +14,24 @@
         @endif
         <div class="row justify-content-center block_card">
             <div class="col">
-                <div class="card demo">
-                    <div class="card-body">
+                <div class="card demo rounded-4">
+                    <div class="card-body text-center">
                         <h3>Projects</h3>
                         <strong class="fs-3">{{$total_project}}</strong>
                     </div>
                 </div>
             </div>
             <div class="col">
-                <div class="card demo">
-                    <div class="card-body">
+                <div class="card demo rounded-4">
+                    <div class="card-body text-center">
                         <h3>User</h3>
                         <strong class="fs-3">{{$total_users}}</strong>
                     </div>
                 </div>
             </div>
             <div class="col">
-                <div class="card demo">
-                    <div class="card-body">
+                <div class="card demo rounded-4">
+                    <div class="card-body text-center">
                         <h3>Technologies</h3>
                         <strong class="fs-3">{{$total_technologies}}</strong>
                     </div>
