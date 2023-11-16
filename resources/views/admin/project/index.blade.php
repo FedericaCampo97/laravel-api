@@ -9,9 +9,9 @@
 </div>
 @endif
 
-<h1 class="my-5">My Post</h1>
+<h1 class="my-5">My Projects</h1>
 
-<a href="/admin/posts/create"><button class="btn btn-primary mb-3"> Create new post </button></a>
+<a href="/admin/projects/create"><button class="btn btn-primary mb-3"> Create new project </button></a>
 
 <div class="table-responsive">
     <table class="table table-striped
@@ -20,7 +20,7 @@
     table-dark
     align-middle">
         <thead class="table-light">
-            <caption>Posts</caption>
+            <caption>Project</caption>
             <tr>
                 <th>COVER IMAGE</th>
                 <th>TITLE</th>
@@ -32,20 +32,20 @@
         </thead>
         <tbody class="table-group-divider">
 
-            @forelse($posts as $post)
+            @forelse($projects as $project)
             <tr class="table-primary">
 
                 <td>
-                    @if($post->cover_image)
-                    <img width="100" src="{{asset('storage/' . $post->cover_image)}}" alt=" {{$post->title}} image">
+                    @if($project->cover_image)
+                    <img width="100" src="{{asset('storage/' . $project->cover_image)}}" alt=" {{$project->title}} image">
                     @else
                     No image
                     @endif
                 </td>
-                <td>{{$post->title}}</td>
-                <td>{{$post->type ? $post->type->name : ''}}</td>
+                <td>{{$project->title}}</td>
+                <td>{{$project->type ? $project->type->name : ''}}</td>
                 <td>
-                    @foreach($post->technologies as $i => $t)
+                    @foreach($project->technologies as $i => $t)
                     @if($i != 0)
                     <span>-</span>
                     @endif
@@ -54,7 +54,7 @@
                 </td>
                 <td></td>
                 <td>
-                    <a href="{{route('admin.posts.show' , $post)}}">
+                    <a href="{{route('admin.projects.show' , $project)}}">
                         <button class="btn btn-outline-primary">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
                                 <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z" />
@@ -62,7 +62,7 @@
                             </svg>
                         </button>
                     </a>
-                    <a href="{{route('admin.posts.edit' , $post)}}">
+                    <a href="{{route('admin.projects.edit' , $project)}}">
                         <button class="btn btn-outline-primary">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
                                 <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
@@ -72,7 +72,7 @@
                     </a>
 
                     <!-- Modal trigger button -->
-                    <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#deletePost-{{$post->id}}">
+                    <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#deleteProject-{{$project->id}}">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3-fill" viewBox="0 0 16 16">
                             <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z" />
                         </svg>
@@ -80,11 +80,11 @@
 
                     <!-- Modal Body -->
                     <!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
-                    <div class="modal fade" id="deletePost-{{$post->id}}" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
+                    <div class="modal fade" id="deleteProject-{{$project->id}}" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="modalTitle-{{$post->id}}">{{$post->title}}</h5>
+                                    <h5 class="modal-title" id="modalTitle-{{$project->id}}">{{$project->title}}</h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
@@ -94,10 +94,10 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"> Close </button>
-                                    <form action="{{route('admin.destroy',$post)}}">
+                                    <form action="{{route('admin.destroy',$project)}}">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn-primary"> Confirm </button>
+                                        <button type="submit" class="btn btn-primary"> Confirm </button>
 
                                     </form>
                                 </div>
@@ -116,11 +116,11 @@
             </tr>
             @empty
             <tr class="table-primary">
-                <td scope="row">No posts here! </td>
+                <td scope="row">No project here! </td>
             </tr>
             @endforelse
 
-            {{$posts->links('pagination::bootstrap-5')}}
+            {{$projects->links('pagination::bootstrap-5')}}
         </tbody>
         <tfoot>
         </tfoot>

@@ -6,7 +6,7 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 
-class UpdatePostRequest extends FormRequest
+class UpdateProjectRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,11 +24,11 @@ class UpdatePostRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => ['required', 'min:5', 'max:50', Rule::unique('posts')->ignore($this->post)],
+            'title' => ['required', 'min:5', 'max:50', Rule::unique('projects')->ignore($this->project)],
             'content' => ['nullable'],
             'cover_image' => ['nullable', 'image', 'max:800'],
-            'type_id' => ['nullable'],
-            'technologies' => ['array', 'nullable']
+            'type_id' => ['required'],
+            'technologies' => ['array', 'required']
         ];
     }
 }

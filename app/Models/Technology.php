@@ -11,8 +11,8 @@ class Technology extends Model
 {
     use HasFactory;
 
-    public function posts(): HasMany
+    public function projects(): HasMany
     {
-        return $this->hasMany(Post::class, 'project_technology', 'project_id', 'technology_id');
+        return $this->hasMany(Project::class, 'project_technology', 'project_id', 'technology_id');
     }
 }

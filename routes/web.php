@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\DashboardController;
-use App\Http\Controllers\Admin\PostController;
+use App\Http\Controllers\Admin\ProjectController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,10 +23,10 @@ Route::get('/', function () {
 Route::middleware(['auth', 'verified'])->prefix('admin')->name('admin.')->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
-    Route::resource('posts', PostController::class)->parameters([
-        'posts' => 'post:slug'
+    Route::resource('projects', ProjectController::class)->parameters([
+        'projects' => 'project:slug'
     ]);
-    Route::get('destroy/{post}', [PostController::class, 'destroy'])->name('destroy');
+    Route::get('destroy/{project}', [ProjectController::class, 'destroy'])->name('destroy');
 });
 
 // Route::get('/dashboard', function () {

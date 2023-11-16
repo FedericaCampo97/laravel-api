@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 
-class Post extends Model
+class Project extends Model
 {
     use HasFactory, SoftDeletes;
 
