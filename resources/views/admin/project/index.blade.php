@@ -9,7 +9,7 @@
 </div>
 @endif
 
-<h1 class="my-5">My Projects</h1>
+<h1 class="my-5 text-white">My Projects</h1>
 
 <a href="/admin/projects/create"><button class="btn btn-primary mb-3"> Create new project </button></a>
 

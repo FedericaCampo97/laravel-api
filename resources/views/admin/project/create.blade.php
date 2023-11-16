@@ -2,7 +2,7 @@
 
 @section('content')
 
-<h1 class="my-5">Create your Project!</h1>
+<h1 class="my-5 text-white">Create your Project!</h1>
 
 @if ($errors->any())
 <div class="alert alert-danger" role="alert">
