@@ -4,7 +4,7 @@
 
 <body class="bg-img">
     <div class="container">
-        <h1 class="text-secondary mt-5 title_welcome text-center text-white">
+        <h1 class="text-secondary mt-5 title_welcome text-center text-white" style="color: 'black' ">
             {{ __('Welcome') }} {{Auth::user()->name}}!
         </h1>
         @if (session('status'))

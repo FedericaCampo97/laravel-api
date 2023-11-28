@@ -5,7 +5,7 @@ a {
 }
 
 .bg-img {
-    background-image: url("/public/storage/img-bg.jpg");
+    background-image: url("https://st3.depositphotos.com/1008648/35714/i/450/depositphotos_357145562-stock-photo-abstract-digital-network-connection-blue.jpg");
     background-size: cover;
 }
 
@@ -30,4 +30,48 @@ a {
 
 .btn_hover:hover {
     scale: 1.1;
+}
+
+.block_home {
+
+    width: 100%;
+    height: 853px;
+    background-size: cover;
+
+    h1 {
+        margin-top: 210px;
+        font-size: 80px;
+    }
+
+    h4 {
+        margin-top: 15px;
+        font-size: 40px;
+    }
+}
+
+.block_home_card {
+    margin-top: 150px;
+
+    .demo {
+        #demo {
+            -webkit-box-shadow: 5px 5px 15px 5px #FFFFFF;
+            box-shadow: 5px 5px 15px 5px #FFFFFF;
+        }
+
+        background-color: rgba(255, 255, 255, 0.203);
+    }
+}
+
+body {
+    background-image: url("https://wallpapercrafter.com/desktop/97118-abstract-3D-digital-art-render-neon-neon-glow.jpg");
+}
+
+.nav_home {
+    background-color: rgba(255, 255, 255, 0);
+
+
+    .container_nav {
+        border-bottom: 1px white solid;
+
+    }
 }
